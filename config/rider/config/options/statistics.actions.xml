@@ -1,0 +1,32 @@
+<application>
+  <component name="ActionsCollector">
+    <counts>
+      <entry action="$Undo" count="2" />
+      <entry action="BuildSolutionAction" count="4" />
+      <entry action="CloseAllEditorsButActive" count="1" />
+      <entry action="CommentByLineComment" count="4" />
+      <entry action="EditorBackSpace" count="7" />
+      <entry action="EditorCopy" count="1" />
+      <entry action="EditorDown" count="2" />
+      <entry action="EditorLineStart" count="1" />
+      <entry action="EditorSelectWord" count="1" />
+      <entry action="EditorUp" count="4" />
+      <entry action="Find" count="1" />
+      <entry action="FindDependantCodeAction" count="1" />
+      <entry action="FindInPath" count="4" />
+      <entry action="FindNext" count="1" />
+      <entry action="GotoFile" count="10" />
+      <entry action="MTDarkerTheme" count="1" />
+      <entry action="MTOceanicTheme" count="1" />
+      <entry action="MTOneDarkTheme" count="1" />
+      <entry action="MTPalenightTheme" count="1" />
+      <entry action="ParameterInfo" count="8" />
+      <entry action="ReSharperGotoImplementation" count="3" />
+      <entry action="SaveDocument" count="6" />
+      <entry action="SearchEverywhere" count="3" />
+      <entry action="ShowSettings" count="10" />
+      <entry action="Vcs.UpdateProject" count="2" />
+      <entry action="context.save" count="1" />
+    </counts>
+  </component>
+</application>

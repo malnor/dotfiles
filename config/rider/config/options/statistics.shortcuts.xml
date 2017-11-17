@@ -1,0 +1,28 @@
+<application>
+  <component name="ShortcutsCollector">
+    <counts>
+      <entry shortcut="Alt+F7" count="1" />
+      <entry shortcut="Alt+Shift+S" count="1" />
+      <entry shortcut="Backspace" count="7" />
+      <entry shortcut="Ctrl+Alt+Shift+B" count="3" />
+      <entry shortcut="Ctrl+Alt+W" count="2" />
+      <entry shortcut="Ctrl+C" count="1" />
+      <entry shortcut="Ctrl+F" count="2" />
+      <entry shortcut="Ctrl+N" count="3" />
+      <entry shortcut="Ctrl+P" count="8" />
+      <entry shortcut="Ctrl+Quote" count="4" />
+      <entry shortcut="Ctrl+S" count="6" />
+      <entry shortcut="Ctrl+Shift+B" count="4" />
+      <entry shortcut="Ctrl+Shift+F" count="4" />
+      <entry shortcut="Ctrl+Shift+N" count="10" />
+      <entry shortcut="Ctrl+W" count="1" />
+      <entry shortcut="Ctrl+Z" count="2" />
+      <entry shortcut="Down" count="2" />
+      <entry shortcut="Enter" count="3" />
+      <entry shortcut="Escape" count="3" />
+      <entry shortcut="F3" count="1" />
+      <entry shortcut="Home" count="1" />
+      <entry shortcut="Up" count="4" />
+    </counts>
+  </component>
+</application>

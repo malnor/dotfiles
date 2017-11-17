@@ -1,9 +1,11 @@
 {
+    "editor.tabSize": 2,
     "editor.detectIndentation": true,
-    "editor.codeLens": false,
+    "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
-    "window.zoomLevel": 0,
-    "files.insertFinalNewline": true,
+    "window.zoomLevel": -1,
+    "workbench.statusBar.visible": true,
+    "workbench.colorTheme": "Material Palenight for Operator Mono",
     "files.exclude": {
         "**/.git": true,
         "**/.DS_Store": true,
@@ -12,5 +14,8 @@
         "**/*.js": {
             "when": "$(basename).ts"
         }
+    },
+    "search.exclude": {
+        "**/node_modules": true
     }
 }

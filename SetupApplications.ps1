@@ -7,34 +7,31 @@ $installActions = @(
     "InstallChocolatey",        # UninstallChocolatey
 
     ### Development tools ###
+    "InstallVisualStudioCode",  # UninstallVisualStudioCode
     "InstallGit",               # UninstallGit
     "InstallBeyondCompare",     # UninstallBeyondCompare
-    "InstallVisualStudioCode",  # UninstallVisualStudioCode
-    #"InstallVisualStudio",     # UninstallVisualStudio
-    "InstallHyperJs",           # UninstallHyperJs
+    "InstallRider",             # UninstallRider
+
+    "InstallTotalCommander",    # UninstallTotalCommander
+    "InstallConEmu",            # UninstallConEmu
     "InstallDocker",            # UninstallDocker
     "InstallDotNetCore",        # UninstallDotNetCore
     "InstallNodeJs",            # UninstallNodeJs
 
     ### Utilities ###
     "InstallEverythingSearch",  # UninstallEverythingSearch
-    "Install7Zip",              # Uninstall7Zip
 
     ### Browsers ###
     "InstallFirefox",           # UninstallFirefox
     "InstallChrome",            # UninstallChrome
 
     ### Social ###
-    "InstallSlack",             # UninstallSlack
-    "InstallTweeten",           # UninstallTweeten
 
     ### Media ###
     "InstallSpotify",           # UninstallSpotify
-    "InstallVLC",               # UninstallVLC
-    #"InstallITunes",            # UninstallITunes
 
     ### Storage ###
-    "InstallDropbox"            # UninstallDropbox
+    "InstallOneDrive"            # UninstallOneDrive
 )
 
 Function InstallChocolatey {
@@ -71,24 +68,11 @@ Function UninstallVisualStudioCode {
     Uninstall-Package "visualstudiocode"
 }
 
-Function InstallVisualStudio {
-    Install-Package 'visualstudio2017enterprise' 'Visual Studio 2017 (Enterprise)'
-    Install-Package 'visualstudio2017-workload-netweb' 'Visual Studio ASP.NET and web development'
-    Install-Package 'visualstudio2017-workload-netcoretools' 'Visual Studio .NET Core tools'
-    Install-Package 'resharper' 'Jetbrain ReSharper'
-}
-
-Function UninstallVisualStudio {
-    Uninstall-Package 'resharper'
-    Uninstall-Package 'visualstudio2017-workload-netcoretools'
-    Uninstall-Package 'visualstudio2017-workload-netweb'
-    Uninstall-Package 'visualstudio2017enterprise'
-}
-
 Function InstallGit {
     Install-Package 'git.install' 'Git' @(
         '/NoShellIntegration', # Disables shell integration ( "Git GUI Here" and "Git Bash Here" entries in context menus).
-        '/NoGitLfs' # Disable Git LFS installation.
+        '/NoGitLfs', # Disable Git LFS installation.
+        '/GitAndUnixToolsOnPath' #Include unit tools in path
     )
 
     if(Test-Path $PSScriptRoot\config\git\gitconfig.local -ne $null)
@@ -112,6 +96,21 @@ Function InstallBeyondCompare { Install-Package 'beyondcompare' 'Beyond Compare'
 
 Function UninstallBeyondCompare { Uninstall-Package 'beyondcompare' 'Beyond Compare' }
 
+Function InstallLockhunter { Install-Package 'lockhunter' 'Lock Hunter' }
+
+Function UninstallLockhunter { Uninstall-Package 'lockhunter' 'Lock Hunter ' }
+
+Function InstallRider { 
+    Invoke-WebRequest -Uri "https://download.jetbrains.com/resharper/JetBrains.Rider-2017.2.1.exe" -OutFile "c:\install\rider.exe"
+    & "c:\installer\rider.exe /S"
+
+    //New-Item -Type HardLink -Force -Path $env:APPDATA\Code\User -Name settings.json -Target $PSScriptRoot\config\vscode\settings.json | Out-Null
+}
+
+Function UninstallRider { 
+    & ExecWait '"$INSTDIR\uninstaller.exe" /S _?=$INSTDIR'
+}
+
 Function InstallEverythingSearch {
     Install-Package 'everything' 'Everything (search)', @(
     '/efu-association', # - Install EFU file association.
@@ -120,56 +119,37 @@ Function InstallEverythingSearch {
     )
 }
 
-Function InstallEverythingSearch { Uninstall-Package 'everything'}
+Function InstallTotalCommander { Install-Package 'totalcommander' 'TotalCommander' }
+Function UninstallTotalCommander { Uninstall-Package 'totalcommander' 'TotalCommander' }
 
-Function Install7Zip { Install-Package '7zip.install' '7-Zip' }
+Function InstallConEmu { Install-Package 'conemu' 'ConEmu' }
+Function UninstallConEmu { Uninstall-Package 'conemu' 'ConEmu' }
 
-Function Uninstall7Zip { Uninstall-Package '7zip.install' }
-
-Function InstallHyperJs {
-    Install-Package 'hyper' 'Hyper.js'
-    New-Item -Type HardLink -Force -Path $HOME -Name .hyper.js -Target $PSScriptRoot\config\hyperjs\hyper.js | Out-Null
-}
-
-Function UninstallHyperJs { Uninstall-Package "hyper" }
 
 Function InstallDocker { Install-Package 'docker-for-windows' 'Docker' }
-
 Function UninstallDocker { Uninstall-Package 'docker-for-windows' }
+
+
 
 Function InstallDotNetCore {
     Install-Package 'dotnetcore-sdk' '.NET Core SDK'
     # Opt out of telemetry https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry
     [Environment]::SetEnvironmentVariable("DOTNET_CLI_TELEMETRY_OPTOUT", "1", "Machine") | Out-Null
 }
-
 Function UninstallDotNetCore {
     Uninstall-Package 'dotnetcore-sdk'
     Remove-Item Env:\DOTNET_CLI_TELEMETRY_OPTOUT -ErrorAction SilentlyContinue
 }
 
 Function InstallNodeJs { Install-Package 'nodejs.install' 'Node.js' }
-
 Function UninnstallNodeJs { Uninstall-Package 'nodejs.install' }
 
-Function InstallSlack { Install-Package 'slack' 'Slack'}
-Function UninstallSlack { Uninstall-Package 'slack' }
-
-Function InstallTweeten { Install-Package 'tweeten' 'Tweeten' }
-
-Function UninstallTweeten { Uninstall-Package 'tweeten' }
+Function InstallEverythingSearch { Uninstall-Package 'everything'}
+Function InstallEverythingSearch { Uninstall-Package 'everything'}
 
 Function InstallSpotify { Install-Package 'spotify' 'Spotify'}
 
 Function UninstallSpotify { Uninstall-Package 'spotify' }
-
-Function InstallVLC { Install-Package 'vlc' 'VLC Media Player' }
-
-Function UninstallVLC { Uninstall-Package 'vlc' }
-
-Function InstallITunes { Install-Package 'itunes' 'iTunes'}
-
-Function UninstallITunes { Uninstall-Package 'itunes' }
 
 Function InstallFirefox { Install-Package 'firefox' 'Firefox' }
 
@@ -179,9 +159,9 @@ Function InstallChrome { Install-Package 'googlechrome', 'Chrome' }
 
 Function InstallChrome { Uninstall-Package 'googlechrome' }
 
-Function InstallDropbox { Install-Package 'dropbox' 'Drop' }
+Function InstallOneDrive { Install-Package 'onedrive' 'OneDrive' }
 
-Function UninstallDropbox { Uninstall-Package 'dropbox' 'Drop' }
+Function InstallOneDrive { Uninstall-Package 'onedrive' 'OneDrive' }
 
 ##########
 # Auxiliary Functions

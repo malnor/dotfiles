@@ -1,27 +1,31 @@
-// Place your key bindings in this file to overwrite the defaults
 [
+    { 
+      "key": "ctrl+d",
+      "command": "lafe.duplicateCode", 
+      "when": "editorTextFocus" },
+    { 
+      "key": "shift+alt+l", 
+      "command": "workbench.files.action.showActiveFileInExplorer" },
     {
-        "key": "shift+alt+l",
-        "command": "workbench.files.action.showActiveFileInExplorer"
+      "key": "ctrl+alt+w",
+      "command": "workbench.action.closeOtherEditors"
     },
     {
-        "key": "ctrl+n",
-        "command": "explorer.newFile"
+      "key": "ctrl+n",
+      "command": "workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+shift+alt+n",
-        "command": "workbench.action.files.newUntitledFile"
+      "key": "ctrl+p",
+      "command": "-workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+n",
-        "command": "-workbench.action.files.newUntitledFile"
+      "key": "ctrl+shift+n",
+      "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+      "when": "inFilesPicker && inQuickOpen"
     },
     {
-        "key": "ctrl+shift+n",
-        "command": "workbench.action.files.newFolder"
-    },
-    {
-        "key": "ctrl+alt+n",
-        "command": "explorer.newFolder"
+      "key": "ctrl+p",
+      "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+      "when": "inFilesPicker && inQuickOpen"
     }
 ]

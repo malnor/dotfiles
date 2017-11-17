@@ -1,0 +1,26 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="evlsprt3.172" value="11" />
+    <property name="ignoreUltimateEdition" value="true" />
+    <property name="RD.Init.Cfg.2" value="true" />
+    <property name="toolwindow.stripes.buttons.info.shown" value="true" />
+    <property name="RD.Init.DialogShown.Ide" value="true" />
+    <property name="file.chooser.recent.files" value="C:/git/RayCare/src/RayCare.Ehr.sln" />
+    <property name="DeploymentNotificationsComponent.WarnDisplayed.Java7&amp;Windows7FTPIssue" value="false" />
+    <property name="last_open_solution_path" value="C:/git/RayCare/src" />
+    <property name="file.gist.reindex.count" value="324" />
+    <property name="ts.lib.d.ts.version" value="2.4.1" />
+    <property name="search.everywhere.max.popup.width" value="640" />
+    <property name="PLUGIN_FILTER" value="material&#10;mater" />
+    <property name="com.chrisrm.idea.MaterialThemeUI.theme" value="one.dark" />
+    <property name="Darcula.savedEditorTheme" value="_@user_Material Palenight" />
+    <property name="Default.savedEditorTheme" value="_@user_Default" />
+    <property name="MTTabsHeight" value="42" />
+    <property name="idea.background.frame.default" value="" />
+    <property name="idea.background.frame.mt" value="https://raw.githubusercontent.com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60" />
+    <property name="fileTypeChangedCounter" value="1" />
+    <property name="com.intellij.diagnostic.IdeErrorsDialogactiveTab" value="0" />
+    <property name="idea.background.frame" value="https://raw.githubusercontent.com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60" />
+    <property name="KEYMAP" value="comment" />
+  </component>
+</application>

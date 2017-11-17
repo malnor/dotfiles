@@ -1,0 +1,12 @@
+<application>
+  <component name="DimensionService">
+    <location key="FileChooserDialogImpl.0.0.1920.1200" x="743" y="226" />
+    <location key="WELCOME_SCREEN.0.0.1920.1200" x="962" y="477" />
+    <location key="find.popup.1920.0.1920.1200" x="3023" y="93" />
+    <location key="SettingsEditor.1920.0.1920.1200" x="2361" y="229" />
+    <location key="#Browse_Repositories.1920.0.1920.1200" x="2460" y="228" />
+    <location key="#Notifications.1920.0.1920.1200" x="2629" y="286" />
+    <location key="IdeErrosDialog.1920.0.1920.1200" x="2464" y="292" />
+    <size key="find.popup.1920.0.1920.1200" width="809" height="633" />
+  </component>
+</application>

@@ -1,0 +1,30 @@
+<application>
+  <component name="RiderRecentProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="C:/git/RayCare/src/RayCare.Ehr.sln" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="C:/git/RayCare/src/RayCare.Ehr.sln" />
+      </list>
+    </option>
+    <option name="lastPath" value="C:/git/RayCare/src/RayCare.Ehr.sln" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="C:/git/RayCare/src/RayCare.Ehr.sln">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="RD-172.4144.1873" />
+              <option name="productionCode" value="RD" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1510911308068" />
+              <option name="buildTimestamp" value="1510506414024" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</application>
