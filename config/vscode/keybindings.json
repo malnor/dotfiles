@@ -11,7 +11,7 @@
       "command": "workbench.action.closeOtherEditors"
     },
     {
-      "key": "ctrl+n",
+      "key": "ctrl+shift+n",
       "command": "workbench.action.quickOpen"
     },
     {
@@ -27,5 +27,9 @@
       "key": "ctrl+p",
       "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
       "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+      "key": "ctrl+e",
+      "command": "-workbench.action.quickOpen"
     }
-]
+  ]

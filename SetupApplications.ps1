@@ -82,7 +82,6 @@ Function InstallGit {
     New-Item -ItemType HardLink -Force -Path $HOME -Name .gitignore -Value $PSScriptRoot\config\git\gitignore | Out-null
     New-Item -ItemType HardLink -Force -Path $HOME -Name .gitattributes -Value $PSScriptRoot\config\git\gitattributes | Out-null
     New-Item -ItemType HardLink -Force -Path $HOME -Name .gitconfig -Value $PSScriptRoot\config\git\gitconfig | Out-null
-    New-Item -ItemType HardLink -Force -Path $HOME -Name .vimrc -Value $PSScriptRoot\config\vim\vimrc | Out-null
 }
 
 Function UninstallGit {

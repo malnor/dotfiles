@@ -1,8 +1,8 @@
 #Requires -RunAsAdministrator
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
-$GITHUB_USER = "pardahlman"
-$REPO_NAME = "dotfiles-windows"
+$GITHUB_USER = "malnor"
+$REPO_NAME = "dotfiles"
 $REPO_URL = "https://github.com/$GITHUB_USER/$REPO_NAME.git"
 $FALLBACK_URL = "https://github.com/$GITHUB_USER/$REPO_NAME/archive/master.zip"
 $TARGET_DIR = "$HOME\dotfiles"
