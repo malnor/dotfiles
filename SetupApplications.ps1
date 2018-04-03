@@ -10,7 +10,7 @@ $installActions = @(
     "InstallVisualStudioCode",  # UninstallVisualStudioCode
     "InstallGit",               # UninstallGit
     "InstallBeyondCompare",     # UninstallBeyondCompare
-    "InstallRider",             # UninstallRider
+    #"InstallRider",             # UninstallRider
 
     "InstallTotalCommander",    # UninstallTotalCommander
     "InstallConEmu",            # UninstallConEmu
@@ -99,14 +99,14 @@ Function InstallLockhunter { Install-Package 'lockhunter' 'Lock Hunter' }
 
 Function UninstallLockhunter { Uninstall-Package 'lockhunter' 'Lock Hunter ' }
 
-Function InstallRider { 
+Function InstallRider {
     Invoke-WebRequest -Uri "https://download.jetbrains.com/resharper/JetBrains.Rider-2017.2.1.exe" -OutFile "c:\install\rider.exe"
     & "c:\installer\rider.exe /S"
 
     //New-Item -Type HardLink -Force -Path $env:APPDATA\Code\User -Name settings.json -Target $PSScriptRoot\config\vscode\settings.json | Out-Null
 }
 
-Function UninstallRider { 
+Function UninstallRider {
     & ExecWait '"$INSTDIR\uninstaller.exe" /S _?=$INSTDIR'
 }
 
@@ -207,7 +207,7 @@ Function Test-PackageInstalled($packageName) {
         $installedName = $_.Split(" ") | Select-Object -First 1;
         if($installedName -eq $packageName) {
             $matchFound = $true
-        } 
+        }
     }
     return $matchFound
 }
