@@ -40,7 +40,7 @@ Function InstallChocolatey {
     } else {
         Write-Host -NoNewline "Installing Chocolatey... "
         # https://chocolatey.org/install
-        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
+        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
         Write-Host "done!"
     }
 }
