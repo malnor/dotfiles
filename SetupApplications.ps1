@@ -1,44 +1,41 @@
 
 $installActions = @(
-    ### Require administrator privileges ###
+    ###  ------ Require administrator privileges ------ ###
     "RequireAdmin",
 
-    ### Requred package manager for install ###
-    # "InstallChocolatey",        # UninstallChocolatey
+    ### ------ Requred package manager for install ------ ###
+    "InstallChocolatey",
 
-    ### Development tools ###
-    # "InstallVisualStudioCode",  # "UninstallVisualStudioCode"
-    # "InstallGit",               # "UninstallGit"
-    # "InstallBeyondCompare",     # UninstallBeyondCompare
-    #"InstallRider",             # UninstallRider
+    ### ------ Development tools ------ ###
+    "InstallVisualStudioCode",
+    "InstallGit",
+    "InstallBeyondCompare",
+    # "InstallRider",
+    "InstallTotalCommander",
+    "InstallConEmu",
+    "InstallDocker",
+    "InstallDotNetCore",
+    "InstallNodeJs",
+    "InstallTelnet",
+    "InstallCurl",
+    "InstallSourceTree",
+    "InstallInkScape",
+    "InstallPowershell"
 
-    # "InstallTotalCommander"    # "UninstallTotalCommander"
-    # "InstallConEmu",            # UninstallConEmu
-    # "InstallDocker",            # UninstallDocker
-    # "InstallDotNetCore",        # UninstallDotNetCore
-    # "InstallNodeJs",            # UninstallNodeJs
+    ###  ------ Utilities ------ ###
+    "InstallEverythingSearch",
 
-    "InstallTelnet",                # "UninstallTelnet"
-    "InstallCurl",                  # "UninstallCurl"
-    "InstallSourceTree"             # "UninstallSourceTree"
-    "InstallInkScape"               # "UninstallInkScape"
+    ###  ------ Browsers ------ ###
+    "InstallFirefox",
+    "InstallChrome",
 
-    #"InstallPowershell"            # "UninstallPowershell"
+    ###  ------ Social ------ ###
 
-    ### Utilities ###
-    # "InstallEverythingSearch",  # UninstallEverythingSearch
+    ###  ------ Media ------ ###
+    "InstallSpotify",
 
-    ### Browsers ###
-    # "InstallFirefox",           # UninstallFirefox
-    # "InstallChrome",            # UninstallChrome
-
-    ### Social ###
-
-    ### Media ###
-    # "InstallSpotify",           # UninstallSpotify
-
-    ### Storage ###
-    # "InstallOneDrive"            # UninstallOneDrive
+    ###  ------ Storage ------ ###
+    "InstallOneDrive"
 )
 
 Function InstallChocolatey {
@@ -163,14 +160,10 @@ Function InstallConEmu {
     .\install.ps1
     Pop-Location
 
+    Install-Package 'conemu' 'ConEmu'
 
-    # Install-Package 'conemu' 'ConEmu'
-
-    # Remove-Item $env:APPDATA\ConEmu.xml -ErrorAction Ignore
-    # New-Item -Type HardLink -Force -Path $env:APPDATA -Name ConEmu.xml -Target $PSScriptRoot\config\conemu\ConEmu.xml | Out-Null
-
-
-
+    Remove-Item $env:APPDATA\ConEmu.xml -ErrorAction Ignore
+    New-Item -Type HardLink -Force -Path $env:APPDATA -Name ConEmu.xml -Target $PSScriptRoot\config\conemu\ConEmu.xml | Out-Null
 }
 Function UninstallConEmu { Uninstall-Package 'conemu' 'ConEmu' }
 
