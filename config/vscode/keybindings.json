@@ -1,10 +1,6 @@
 [
-    { 
-      "key": "ctrl+d",
-      "command": "lafe.duplicateCode", 
-      "when": "editorTextFocus" },
-    { 
-      "key": "shift+alt+l", 
+    {
+      "key": "shift+alt+l",
       "command": "workbench.files.action.showActiveFileInExplorer" },
     {
       "key": "ctrl+alt+w",
@@ -31,5 +27,15 @@
     {
       "key": "ctrl+e",
       "command": "-workbench.action.quickOpen"
+    },
+    {
+      "key": "ctrl+d",
+      "command": "editor.action.copyLinesDownAction",
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "shift+alt+down",
+      "command": "-editor.action.copyLinesDownAction",
+      "when": "editorTextFocus && !editorReadonly"
     }
   ]

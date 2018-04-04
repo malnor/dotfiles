@@ -4,34 +4,41 @@ $installActions = @(
     "RequireAdmin",
 
     ### Requred package manager for install ###
-    "InstallChocolatey",        # UninstallChocolatey
+    # "InstallChocolatey",        # UninstallChocolatey
 
     ### Development tools ###
-    "InstallVisualStudioCode",  # UninstallVisualStudioCode
-    "InstallGit",               # UninstallGit
-    "InstallBeyondCompare",     # UninstallBeyondCompare
+    # "InstallVisualStudioCode",  # "UninstallVisualStudioCode"
+    # "InstallGit",               # "UninstallGit"
+    # "InstallBeyondCompare",     # UninstallBeyondCompare
     #"InstallRider",             # UninstallRider
 
-    "InstallTotalCommander",    # UninstallTotalCommander
-    "InstallConEmu",            # UninstallConEmu
-    "InstallDocker",            # UninstallDocker
-    "InstallDotNetCore",        # UninstallDotNetCore
-    "InstallNodeJs",            # UninstallNodeJs
+    # "InstallTotalCommander"    # "UninstallTotalCommander"
+    # "InstallConEmu",            # UninstallConEmu
+    # "InstallDocker",            # UninstallDocker
+    # "InstallDotNetCore",        # UninstallDotNetCore
+    # "InstallNodeJs",            # UninstallNodeJs
+
+    "InstallTelnet",                # "UninstallTelnet"
+    "InstallCurl",                  # "UninstallCurl"
+    "InstallSourceTree"             # "UninstallSourceTree"
+    "InstallInkScape"               # "UninstallInkScape"
+
+    #"InstallPowershell"            # "UninstallPowershell"
 
     ### Utilities ###
-    "InstallEverythingSearch",  # UninstallEverythingSearch
+    # "InstallEverythingSearch",  # UninstallEverythingSearch
 
     ### Browsers ###
-    "InstallFirefox",           # UninstallFirefox
-    "InstallChrome",            # UninstallChrome
+    # "InstallFirefox",           # UninstallFirefox
+    # "InstallChrome",            # UninstallChrome
 
     ### Social ###
 
     ### Media ###
-    "InstallSpotify",           # UninstallSpotify
+    # "InstallSpotify",           # UninstallSpotify
 
     ### Storage ###
-    "InstallOneDrive"            # UninstallOneDrive
+    # "InstallOneDrive"            # UninstallOneDrive
 )
 
 Function InstallChocolatey {
@@ -86,18 +93,35 @@ Function InstallGit {
 
 Function UninstallGit {
     Uninstall-Package "git"
-    Remove-Item "$HOME\.gitignore"
-    Remove-Item "$HOME\.gitattributes"
-    Remove-Item "$HOME\.gitconfig"
+}
+
+Function InstallPowershell {
+    Install-Package 'powershell-core' 'Powershell Core'
+
+    # Setup profile location
+    New-ItemProperty 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders' Personal -Value $env:userprofile -Type ExpandString -Force
+    New-Item -ItemType HardLink -Force -Path $env:userprofile\powershell -Name Microsoft.PowerShell_profile.ps1 -Value $PSScriptRoot\config\powershell\Microsoft.PowerShell_profile.ps1 | Out-null
+
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    Install-Module -Name 'Get-ChildItemColor'
+    Install-Module -Name 'posh-git'
+    Install-Module -Name 'oh-my-posh'
+}
+
+Function UninstallPowershell {
+    Uninstall-Package 'powershell-core'
+
+    Uninstall-Package 'poshgit'
 }
 
 Function InstallBeyondCompare { Install-Package 'beyondcompare' 'Beyond Compare' }
+Function UninstallBeyondCompare { Uninstall-Package 'beyondcompare' }
 
-Function UninstallBeyondCompare { Uninstall-Package 'beyondcompare' 'Beyond Compare' }
+Function InstallInkScape { Install-Package 'inkscape' 'InkScape' }
+Function UninstallInkScape { Uninstall-Package 'inkscape' }
 
 Function InstallLockhunter { Install-Package 'lockhunter' 'Lock Hunter' }
-
-Function UninstallLockhunter { Uninstall-Package 'lockhunter' 'Lock Hunter ' }
+Function UninstallLockhunter { Uninstall-Package 'lockhunter' }
 
 Function InstallRider {
     Invoke-WebRequest -Uri "https://download.jetbrains.com/resharper/JetBrains.Rider-2017.2.1.exe" -OutFile "c:\install\rider.exe"
@@ -118,10 +142,36 @@ Function InstallEverythingSearch {
     )
 }
 
-Function InstallTotalCommander { Install-Package 'totalcommander' 'TotalCommander' }
-Function UninstallTotalCommander { Uninstall-Package 'totalcommander' 'TotalCommander' }
+Function InstallTotalCommander {
+    Install-Package 'totalcommander' 'TotalCommander'
 
-Function InstallConEmu { Install-Package 'conemu' 'ConEmu' }
+    Remove-Item $env:APPDATA\Ghisler\wincmd.ini -ErrorAction Ignore
+    New-Item -Type HardLink -Force -Path $env:APPDATA\Ghisler -Name wincmd.ini -Target $PSScriptRoot\config\totalcommander\wincmd.ini | Out-Null
+}
+
+Function UninstallTotalCommander {
+    Uninstall-Package 'totalcommander' 'TotalCommander'
+
+    Remove-Item $env:APPDATA\Ghisler\wincmd.ini -ErrorAction Ignore
+}
+
+Function InstallConEmu {
+    $powerfontslocation = "$env:USERPROFILE\powerfonts"
+    git clone https://github.com/powerline/fonts.git $powerfontslocation
+    Push-Location
+    Set-Location $powerfontslocation
+    .\install.ps1
+    Pop-Location
+
+
+    # Install-Package 'conemu' 'ConEmu'
+
+    # Remove-Item $env:APPDATA\ConEmu.xml -ErrorAction Ignore
+    # New-Item -Type HardLink -Force -Path $env:APPDATA -Name ConEmu.xml -Target $PSScriptRoot\config\conemu\ConEmu.xml | Out-Null
+
+
+
+}
 Function UninstallConEmu { Uninstall-Package 'conemu' 'ConEmu' }
 
 
@@ -139,6 +189,15 @@ Function UninstallDotNetCore {
     Uninstall-Package 'dotnetcore-sdk'
     Remove-Item Env:\DOTNET_CLI_TELEMETRY_OPTOUT -ErrorAction SilentlyContinue
 }
+
+Function InstallSourceTree { Install-Package 'sourcetree' 'SourceTree' }
+Function UninstallSourceTree { Uninstall-Package 'sourcetree' }
+
+Function InstallTelnet { Install-Package 'telnet' 'Telnet' }
+Function UninstallTelnet { Uninstall-Package 'telnet' }
+
+Function InstallCurl { Install-Package 'curl' 'Curl' }
+Function UninstallCurl { Uninstall-Package 'curl' }
 
 Function InstallNodeJs { Install-Package 'nodejs.install' 'Node.js' }
 Function UninnstallNodeJs { Uninstall-Package 'nodejs.install' }
@@ -175,7 +234,7 @@ Function RequireAdmin {
 }
 
 Function Remove-DesktopShortcuts {
-    Get-ChildItem -Path $HOME\Desktop -Filter *.lnk | ForEach-Object { Remove-Item $_ -ErrorAction SilentlyContinue }
+    Get-ChildItem -Path $env:USERPROFILE\Desktop -Filter *.lnk | ForEach-Object { Remove-Item $_ -ErrorAction SilentlyContinue }
 }
 Function Uninstall-Package([string] $packageName) {
     if(Get-CommandAvailable "choco") {
