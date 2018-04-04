@@ -21,6 +21,7 @@ $installActions = @(
     "InstallSourceTree",
     "InstallInkScape",
     "InstallPowershell"
+    "InstallYarn"
 
     ###  ------ Utilities ------ ###
     "InstallEverythingSearch",
@@ -66,6 +67,8 @@ Function InstallVisualStudioCode {
 
     New-Item -Type HardLink -Force -Path $env:APPDATA\Code\User -Name settings.json -Target $PSScriptRoot\config\vscode\settings.json | Out-Null
     New-Item -Type HardLink -Force -Path $env:APPDATA\Code\User -Name keybindings.json -Target $PSScriptRoot\config\vscode\keybindings.json | Out-Null
+
+    code --install-extension ow.vscode-subword-navigation
 }
 
 Function UninstallVisualStudioCode {
@@ -110,6 +113,9 @@ Function UninstallPowershell {
 
     Uninstall-Package 'poshgit'
 }
+
+Function InstallYarn { Install-Package 'yarn' 'Yarn' }
+Function UninstallYarn { Uninstall-Package 'yarn' }
 
 Function InstallBeyondCompare { Install-Package 'beyondcompare' 'Beyond Compare' }
 Function UninstallBeyondCompare { Uninstall-Package 'beyondcompare' }

@@ -37,5 +37,45 @@
       "key": "shift+alt+down",
       "command": "-editor.action.copyLinesDownAction",
       "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "key": "ctrl+left",
+      "command": "subwordNavigation.cursorSubwordLeft",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+left",
+      "command": "-subwordNavigation.cursorSubwordLeft",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "subwordNavigation.cursorSubwordRight",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+right",
+      "command": "-subwordNavigation.cursorSubwordRight",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+shift+left",
+      "command": "subwordNavigation.cursorSubwordLeftSelect",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+left",
+      "command": "-subwordNavigation.cursorSubwordLeftSelect",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+shift+right",
+      "command": "subwordNavigation.cursorSubwordRightSelect",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+right",
+      "command": "-subwordNavigation.cursorSubwordRightSelect",
+      "when": "editorTextFocus"
     }
   ]
