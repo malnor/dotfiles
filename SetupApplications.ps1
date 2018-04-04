@@ -123,8 +123,6 @@ Function UninstallLockhunter { Uninstall-Package 'lockhunter' }
 Function InstallRider {
     Invoke-WebRequest -Uri "https://download.jetbrains.com/resharper/JetBrains.Rider-2017.2.1.exe" -OutFile "c:\install\rider.exe"
     & "c:\installer\rider.exe /S"
-
-    //New-Item -Type HardLink -Force -Path $env:APPDATA\Code\User -Name settings.json -Target $PSScriptRoot\config\vscode\settings.json | Out-Null
 }
 
 Function UninstallRider {
