@@ -69,6 +69,8 @@ Function InstallVisualStudioCode {
     New-Item -Type HardLink -Force -Path $env:APPDATA\Code\User -Name keybindings.json -Target $PSScriptRoot\config\vscode\keybindings.json | Out-Null
 
     code --install-extension ow.vscode-subword-navigation
+    code --install-extension ms-vscode.powershell
+    code --install-extension dbaeumer.vscode-eslint
 }
 
 Function UninstallVisualStudioCode {
